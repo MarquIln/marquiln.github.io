@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RetroTrip - Privacy Policy</title>
+  <link rel="icon" type="image/jpeg" href="iconDark.jpg">
+  <link rel="apple-touch-icon" href="iconDark.jpg">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      background: linear-gradient(135deg, #f4e4bc 0%, #d4a574 100%);
+      color: #2c1810;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+      color: #f4e4bc;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 4px solid #654321;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 3px 3px 0px #654321, 6px 6px 0px rgba(0,0,0,0.2);
+      font-family: "Georgia", serif;
+      letter-spacing: 1px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #8b4513, #a0522d);
+      color: #f4e4bc;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, #654321, #8b4513);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(139, 69, 19, 0.4);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex: 1;
+    }
+
+    .content {
+      background: rgba(244, 228, 188, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 
+        0 16px 40px rgba(101, 67, 33, 0.2),
+        inset 0 0 0 3px #8b4513;
+      border: 3px solid #8b4513;
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .content::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 2px dashed #a0522d;
+      border-radius: 15px;
+      pointer-events: none;
+    }
+
+    .content h2 {
+      color: #8b4513;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      margin-top: 0;
+      font-family: "Georgia", serif;
+      text-shadow: 2px 2px 0px rgba(160, 82, 45, 0.3);
+    }
+
+    .content h3 {
+      color: #8b4513;
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-family: "Georgia", serif;
+    }
+
+    .content p {
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .content ul {
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+    }
+
+    .content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #e6d2a6, #d4a574);
+      padding: 1rem;
+      border-radius: 10px;
+      border-left: 4px solid #8b4513;
+      margin: 1.5rem 0;
+    }
+
+    .last-updated {
+      font-style: italic;
+      color: #a0522d;
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px solid #a0522d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
+      color: #f4e4bc;
+      border-top: 4px solid #a0522d;
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 1.5rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .content {
+        padding: 1.5rem;
+        margin: 1rem 0;
+      }
+      
+      .container {
+        padding: 0 0.5rem;
+      }
+    }
+
+    /* Vintage texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(101, 67, 33, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-btn">← Back to Support</a>
+    <h1>Privacy Policy</h1>
+  </header>
+
+  <div class="container">
+    <div class="content">
+      <h2>RetroTrip Privacy Policy</h2>
+      
+      <div class="highlight">
+        <strong>In summary:</strong> RetroTrip only collects the Game Center username for game functionality. We do not collect, store, or share any other personal information.
+      </div>
+
+      <h3>1. Information We Collect</h3>
+      <p>RetroTrip collects in a limited and specific manner only:</p>
+      <ul>
+        <li><strong>Game Center Username:</strong> Used exclusively for player identification and Game Center-related functionality (leaderboards, achievements, etc.)</li>
+      </ul>
+      
+      <p><strong>We do NOT collect:</strong></p>
+      <ul>
+        <li>Personally identifiable information (real name, email, phone, address)</li>
+        <li>Location data</li>
+        <li>Payment information</li>
+        <li>Usage or behavior data within the app</li>
+        <li>Device information beyond what's necessary for basic functionality</li>
+      </ul>
+
+      <h3>2. How We Use Information</h3>
+      <p>The Game Center username is used exclusively to:</p>
+      <ul>
+        <li>Identify the player in Game Center functionality</li>
+        <li>Display leaderboards and achievements</li>
+        <li>Enable basic Game Center social features</li>
+      </ul>
+
+      <h3>3. Information Sharing</h3>
+      <p>We do not share, sell, or transfer the Game Center username or any other information to third parties. The only exceptions would be:</p>
+      <ul>
+        <li>If legally required by competent authorities</li>
+        <li>To protect our legal rights or user safety</li>
+      </ul>
+
+      <h3>4. Storage and Security</h3>
+      <p>The Game Center username is managed directly by Apple through Game Center services. We do not store this information on our own servers.</p>
+
+      <h3>5. User Rights</h3>
+      <p>You can:</p>
+      <ul>
+        <li>Disable Game Center in your device settings at any time</li>
+        <li>Delete the app, thus removing any association with your Game Center username</li>
+        <li>Contact us for clarifications about this policy</li>
+      </ul>
+
+      <h3>6. Children's Privacy</h3>
+      <p>RetroTrip is suitable for all ages. For children under 13, we recommend parental supervision. We do not intentionally collect personal information from minors.</p>
+
+      <h3>7. Changes to This Policy</h3>
+      <p>We may update this policy occasionally. Significant changes will be communicated through app updates or other appropriate means.</p>
+
+      <h3>8. Contact</h3>
+      <p>For questions about this Privacy Policy, please contact:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:marcosraach.1@gmail.com">marcosraach.1@gmail.com</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/MarquIln/RetroTripSupport" target="_blank">RetroTrip Support</a></li>
+      </ul>
+
+      <div class="last-updated">
+        <strong>Last updated:</strong> September 30, 2025
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 RetroTrip. All rights reserved.
+  </footer>
+</body>
+</html>

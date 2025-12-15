@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RetroTrip - Support</title>
+  <link rel="icon" type="image/jpeg" href="iconDark.jpg">
+  <link rel="apple-touch-icon" href="iconDark.jpg">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      background: linear-gradient(135deg, #f4e4bc 0%, #d4a574 100%);
+      color: #2c1810;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+      color: #f4e4bc;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid #654321;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(139, 69, 19, 0.1) 10px,
+        rgba(139, 69, 19, 0.1) 20px
+      );
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 3px 3px 0px #654321, 6px 6px 0px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease-out;
+      font-family: "Georgia", serif;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      color: #f4e4bc;
+      font-size: 1.2rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease-out 0.2s both;
+      font-style: italic;
+      text-shadow: 2px 2px 0px rgba(101, 67, 33, 0.5);
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: block;
+      border: 4px solid #f4e4bc;
+      animation: fadeInUp 1s ease-out 0.1s both;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex: 1;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-header h2 {
+      color: #8b4513;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: "Georgia", serif;
+      text-shadow: 2px 2px 0px rgba(160, 82, 45, 0.3);
+    }
+
+    .gallery-header p {
+      color: #a0522d;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin: 0;
+      opacity: 0.8;
+    }
+
+    .gallery {
+      position: relative;
+      margin-bottom: 6rem;
+      padding: 2rem 0;
+    }
+
+    .gallery-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 2rem;
+      padding: 1rem 3rem 4rem 3rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .gallery-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, #8b4513, #a0522d);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      color: #f4e4bc;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(139, 69, 19, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-nav-btn:hover {
+      background: linear-gradient(135deg, #654321, #8b4513);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 16px rgba(139, 69, 19, 0.6);
+    }
+
+    .gallery-nav-btn:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .gallery-nav-btn.prev {
+      left: 10px;
+    }
+
+    .gallery-nav-btn.next {
+      right: 10px;
+    }
+
+    .gallery-nav-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: #a0522d;
+    }
+
+    .gallery-nav-btn:disabled:hover {
+      transform: translateY(-50%);
+    }
+
+    .gallery-item {
+      flex: 0 0 400px;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: grab;
+      border-radius: 16px;
+      overflow: visible;
+    }
+
+    .gallery-item:active {
+      cursor: grabbing;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 16px 32px rgba(101, 67, 33, 0.4),
+        inset 0 0 0 3px #654321;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 4px 8px rgba(139, 69, 19, 0.2));
+      border-radius: 12px;
+    }
+
+    .gallery-item:hover img {
+      filter: drop-shadow(0 6px 12px rgba(139, 69, 19, 0.3));
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: sepia(30%) contrast(120%) brightness(120%);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #8b4513, #a0522d);
+      color: #f4e4bc;
+      padding: 0.8rem 1.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 25px;
+      font-family: "Georgia", serif;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
+      transition: all 0.3s ease;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      bottom: -55px;
+      opacity: 1;
+      box-shadow: 0 6px 12px rgba(139, 69, 19, 0.4);
+    }    .support {
+      background: rgba(244, 228, 188, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 2.5rem;
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      border-radius: 20px;
+      box-shadow: 
+        0 16px 40px rgba(101, 67, 33, 0.2),
+        inset 0 0 0 3px #8b4513;
+      border: 3px solid #8b4513;
+      position: relative;
+    }
+
+    .support::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 2px dashed #a0522d;
+      border-radius: 15px;
+      pointer-events: none;
+    }
+
+    .support h2 {
+      margin-top: 0;
+      color: #8b4513;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-family: "Georgia", serif;
+      text-shadow: 2px 2px 0px rgba(160, 82, 45, 0.3);
+    }
+
+    .support ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .support li {
+      margin: 1rem 0;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, #f4e4bc, #e6d2a6);
+      border-radius: 12px;
+      border: 2px solid #8b4513;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .support li::before {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+    }
+
+    .support li:nth-child(1)::before {
+      content: '📧';
+    }
+
+    .support li:nth-child(2)::before {
+      content: '🐙';
+    }
+
+    .support li:nth-child(3)::before {
+      content: '🔒';
+    }
+
+    .support li {
+      padding-left: 3rem;
+    }
+
+    .support li:hover {
+      transform: translateX(8px);
+      box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+      background: linear-gradient(135deg, #e6d2a6, #d4a574);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
+      color: #f4e4bc;
+      position: relative;
+      border-top: 4px solid #a0522d;
+      margin-top: auto;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        #f4e4bc,
+        #f4e4bc 10px,
+        transparent 10px,
+        transparent 20px
+      );
+    }
+
+    a {
+      color: #8b4513;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+    }
+
+    a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(90deg, #8b4513, #a0522d);
+      transition: width 0.3s ease;
+    }
+
+    a:hover::after {
+      width: 100%;
+    }
+
+    a:hover {
+      color: #654321;
+      transform: translateY(-1px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .gallery-item {
+        flex: 0 0 320px;
+      }
+      
+      .gallery-container {
+        padding: 1rem 2rem 4rem 2rem;
+      }
+      
+      .gallery-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+      
+      .gallery-nav-btn.prev {
+        left: 5px;
+      }
+      
+      .gallery-nav-btn.next {
+        right: 5px;
+      }
+      
+      .gallery-header h2 {
+        font-size: 1.5rem;
+      }
+      
+      .gallery-header p {
+        font-size: 1rem;
+      }
+      
+      .support {
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+      
+      .container {
+        padding: 0 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-item {
+        flex: 0 0 280px;
+      }
+      
+      .gallery-container {
+        gap: 1.5rem;
+        padding: 1rem 1rem 4rem 1rem;
+      }
+      
+      .gallery-nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+      
+      .gallery-caption {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+
+    /* Vintage texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(101, 67, 33, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="iconDark.jpg" alt="RetroTrip Icon" class="logo">
+    <h1>RetroTrip Support</h1>
+    <p>Learn history in a fun and immersive way</p>
+  </header>
+
+  <div class="container">
+    <div class="gallery-header">
+      <h2>Screenshots do App</h2>
+      <p>← Deslize para ver mais imagens →</p>
+    </div>
+    <section class="gallery">
+      <button class="gallery-nav-btn prev" onclick="scrollGallery('prev')">‹</button>
+      <button class="gallery-nav-btn next" onclick="scrollGallery('next')">›</button>
+      
+      <div class="gallery-container" id="galleryContainer">
+        <div class="gallery-item">
+          <img src="Preview 7.png" alt="Quick Quizzes">
+          <div class="gallery-caption">Quick Quizzes</div>
+        </div>
+        <div class="gallery-item">
+          <img src="Preview 8.png" alt="Travel the World">
+          <div class="gallery-caption">Travel the World</div>
+        </div>
+        <div class="gallery-item">
+          <img src="Preview 5.png" alt="Immersive Scenes">
+          <div class="gallery-caption">Immersive Scenes</div>
+        </div>
+        <div class="gallery-item">
+          <img src="Preview 6.png" alt="Unlock Missions">
+          <div class="gallery-caption">Unlock Missions</div>
+        </div>
+        <div class="gallery-item">
+          <img src="Preview 2.png" alt="Learn by Exploring">
+          <div class="gallery-caption">Learn by Exploring</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="support">
+      <h2>Need Help?</h2>
+      <p>If you encounter any issues with the app, feel free to reach out:</p>
+      <ul>
+        <li>Email: <a href="mailto:marcosraach.1@gmail.com">marcosraach.1@gmail.com</a></li>
+        <li>GitHub: <a href="https://github.com/seuusuario/retrotrip-support" target="_blank">RetroTrip Support Repo</a></li>
+        <li>Privacy Policy: <a href="privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 RetroTrip. All rights reserved.
+  </footer>
+
+  <script>
+    function scrollGallery(direction) {
+      const container = document.getElementById('galleryContainer');
+      const scrollAmount = 420; // Width of one item + gap
+      
+      if (direction === 'next') {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+      
+      updateNavButtons();
+    }
+    
+    function updateNavButtons() {
+      const container = document.getElementById('galleryContainer');
+      const prevBtn = document.querySelector('.gallery-nav-btn.prev');
+      const nextBtn = document.querySelector('.gallery-nav-btn.next');
+      
+      // Check if at start
+      prevBtn.disabled = container.scrollLeft <= 0;
+      
+      // Check if at end
+      nextBtn.disabled = container.scrollLeft >= (container.scrollWidth - container.clientWidth);
+    }
+    
+    // Update buttons on scroll
+    document.getElementById('galleryContainer').addEventListener('scroll', updateNavButtons);
+    
+    // Initialize buttons state
+    window.addEventListener('load', updateNavButtons);
+    
+    // Add drag functionality
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    const container = document.getElementById('galleryContainer');
+    
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      container.style.cursor = 'grabbing';
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.style.cursor = 'grab';
+    });
+    
+    container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.style.cursor = 'grab';
+    });
+    
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 2;
+      container.scrollLeft = scrollLeft - walk;
+    });
+  </script>
+</body>
+</html>
